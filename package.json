@@ -1,0 +1,14 @@
+{
+  "name": "node-load-benchmarking-loader",
+  "version": "1.0.0",
+  "description": "A Node module loader to benchmark the time it takes to load an ESM module graph",
+  "keywords": [
+    "benchmark",
+    "esm"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
+}

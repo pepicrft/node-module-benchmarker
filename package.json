@@ -20,8 +20,8 @@
     }
   },
   "scripts": {
-    "node-esm-benchmark": "nx exec -- node bin/node-esm-benchmark.js",
-    "build": "nx exec -- tsc -p ./tsconfig.build.json",
+    "node-esm-benchmark": "pnpm build && BENCHMARK_OUTPUT_PATH=./output.json node bin/node-esm-benchmark.js",
+    "build": "pnpm clean && tsc -p ./tsconfig.build.json",
     "clean": "rimraf dist",
     "test": "vitest --run"
   },
@@ -40,20 +40,9 @@
   "engines": {
     "node": ">=14.17.0"
   },
-  "nx": {
-    "targets": {
-      "build": {
-        "dependsOn": ["clean"],
-        "outputs": [
-          "{projectRoot}/dist"
-        ]
-      },
-      "clean": {},
-      "node-esm-benchmark": {
-        "dependsOn": [
-          "^build"
-        ]
-      }
-    }
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "execa": "^6.1.0",
+    "find-up": "^6.3.0"
   }
 }

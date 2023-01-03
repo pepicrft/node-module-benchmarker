@@ -43,8 +43,6 @@ export async function run() {
         ts: modules[uri]?.start,
         dur: modules[uri]?.diff,
         ph: 'X',
-        pid: 1,
-        tid: 1,
         args: {
           ms: modules[uri]?.diff
         }
@@ -56,10 +54,11 @@ export async function run() {
 }
 
 async function eventMetadata(uri: string): Promise<any> {
-  if (!uri.includes("file://")) { return {cat: '', name: uri} }
+  if (!uri.includes("file://")) { return {pid: 'node', name: uri} }
   const path = fileURLToPath(uri)
   const packageJsonPath = await findUp('package.json', {cwd: path}) as string
   const packageJson = await promises.readFile(packageJsonPath)
   const packageName = JSON.parse(packageJson.toString())['name']
-  return { cat: packageName, name: `${packageName}:${relative(dirname(packageJsonPath), path)}`}
+  const id = `${packageName}:${relative(dirname(packageJsonPath), path)}`
+  return { pid: packageName, tid: id, name: id}
 }

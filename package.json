@@ -20,6 +20,10 @@
     "vitest": "^0.26.3",
     "nx": "15.4.2"
   },
+  "engine-strict": true,
+  "engines": {
+    "node": ">=14.17.0"
+  },
   "nx": {
     "targets": {
       "build": {

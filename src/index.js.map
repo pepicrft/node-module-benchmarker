@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["index.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAO,UAAU,SAAS;AAEjC,CAAC","sourcesContent":["export default function something() {\n\n}\n"]}

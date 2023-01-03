@@ -1,3 +1,2 @@
-export default function something() {
-
-}
+export {load} from "./load.js"
+export {resolve} from "./resolve";

@@ -22,3 +22,4 @@
 - [tsm loader](https://github.com/lukeed/tsm)
 - [loaders documentation](https://nodejs.org/api/esm.html#loaders)
 - [Trace Event Format](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit)
+- [Chrome Tracing as Profiler Frontend](https://aras-p.info/blog/2017/01/23/Chrome-Tracing-as-Profiler-Frontend/)

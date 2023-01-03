@@ -20,6 +20,7 @@
     }
   },
   "scripts": {
+    "node-esm-benchmark": "node bin/node-esm-benchmark.js",
     "build": "nx exec -- tsc -p ./tsconfig.build.json",
     "clean": "rimraf dist",
     "test": "vitest --run"
@@ -42,11 +43,17 @@
   "nx": {
     "targets": {
       "build": {
+        "dependsOn": ["clean"],
         "outputs": [
           "{projectRoot}/dist"
         ]
       },
-      "clean": {}
+      "clean": {},
+      "node-esm-benchmark": {
+        "dependsOn": [
+          "^build"
+        ]
+      }
     }
   }
 }

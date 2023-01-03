@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         node: ['19.1.0']
-        os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
+        os: ['ubuntu-latest', 'macos-latest']
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2.2.4

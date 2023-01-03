@@ -1,22 +1,27 @@
 {
+  "compileOnSave": false,
     "compilerOptions": {
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "target": "es6",
-        "noImplicitAny": true,
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "outDir": "dist",
-        "baseUrl": ".",
-        "paths": {
-            "*": [
-                "node_modules/*",
-                "src/types/*"
-            ]
-        }
+      "lib": ["ES2020"],
+      "module": "ES2020",
+      "target": "ES2020",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "strict": true,
+      "strictNullChecks": true,
+      "resolveJsonModule": true,
+      "skipDefaultLibCheck": true,
+      "skipLibCheck": true,
+      "declaration": true,
+      "isolatedModules": false,
+      "composite": true,
+      "sourceMap": true,
+      "inlineSources": true,
+      "noUncheckedIndexedAccess": true,
+      "outDir": "dist",
+      "rootDir": "src",
+      "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
     },
-    "include": [
-        "src/**/*"
-    ]
+  "include": [
+      "src/**/*"
+  ],
 }

@@ -6,11 +6,28 @@
     "benchmark",
     "esm"
   ],
-  "author": "",
+  "scripts": {
+    "build": "nx exec -- tsc -p ./tsconfig.build.json",
+    "clean": "rimraf dist",
+    "test": "vitest --run"
+  },
+  "author": "oss@craftweg.com",
   "license": "MIT",
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
+    "rimraf": "^3.0.2",
     "typescript": "^4.9.4",
-    "vitest": "^0.26.3"
+    "vitest": "^0.26.3",
+    "nx": "15.4.2"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": [
+          "{projectRoot}/dist"
+        ]
+      },
+      "clean": {}
+    }
   }
 }

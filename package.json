@@ -20,7 +20,7 @@
     }
   },
   "scripts": {
-    "node-esm-benchmark": "node bin/node-esm-benchmark.js",
+    "node-esm-benchmark": "nx exec -- node bin/node-esm-benchmark.js",
     "build": "nx exec -- tsc -p ./tsconfig.build.json",
     "clean": "rimraf dist",
     "test": "vitest --run"

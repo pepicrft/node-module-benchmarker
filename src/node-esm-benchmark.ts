@@ -3,32 +3,34 @@ import chalk from "chalk";
 import { promises } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, relative } from "path";
-import { findUp, pathExists } from "find-up";
+import { findUp } from "find-up";
+import { log, logError } from "./logger.js";
 
-export async function run() {
-  const benchmarkOutputPath: string | undefined = process.env.BENCHMARK_OUTPUT_PATH;
+export async function run(nodeProcess: NodeJS.Process = process) {
+  const benchmarkOutputPath: string | undefined = nodeProcess.env.BENCHMARK_OUTPUT_PATH;
   if (!benchmarkOutputPath) {
-    console.error(chalk.bold.red(`The expected environment variable BENCHMARK_OUTPUT_PATH is missing`));
-    process.exit(1);
+    logError(chalk.bold.red(`The expected environment variable BENCHMARK_OUTPUT_PATH is missing`));
+    nodeProcess.exit(1);
   }
 
   const modules: { [uri: string]: { start: number; end: number; diff: number } } = {};
-  const executableIndex = process.argv.findIndex((value) => value.includes("node-esm-benchmark"));
-  let args = [...process.argv].slice(executableIndex + 1, process.argv.length);
-  console.log(chalk.bold.green(`Benchmarking: ${args.join(" ")}`));
+  const executableIndex = nodeProcess.argv.findIndex((value) => value.includes("node-esm-benchmark"));
+  let args = [...nodeProcess.argv].slice(executableIndex + 1, nodeProcess.argv.length);
+  log(chalk.bold.green(`Benchmarking: ${args.join(" ")}`));
   args = ["--loader", "node-esm-benchmark", ...args];
 
-  const nodeProcess = execa("node", args, {
+  const task = execa("node", args, {
     stdout: "pipe",
     stderr: "pipe",
     stdin: "inherit",
   });
-  nodeProcess.stdout.on("data", (message: string) => {
+
+  task.stdout.on("data", (message: string) => {
     const regex = /BENCHMARK_MODULE_LOAD_TIME_START(.+)BENCHMARK_MODULE_LOAD_TIME_END/;
     const matches = message.toString().match(regex);
     if (matches) {
       const payload = JSON.parse(matches[1] as string);
-      console.log(chalk.gray(`  Module loaded: ${payload.uri}`));
+      log(chalk.gray(`  Module loaded: ${payload.uri}`));
       modules[payload.uri] = {
         start: payload.start,
         end: payload.end,
@@ -36,30 +38,47 @@ export async function run() {
       };
     }
   });
-  nodeProcess.stderr.on("data", (message: string) => {
-    process.stderr.write(message);
+  task.stderr.on("data", (message: string) => {
+    nodeProcess.stderr.write(message);
   });
-  await nodeProcess;
+  await task;
+
+  await outputProfilerFile(modules, benchmarkOutputPath);
+}
+
+async function outputProfilerFile(
+  modules: { [uri: string]: { start: number; end: number; diff: number } },
+  benchmarkOutputPath: string
+) {
   const fileContent = {
     traceEvents: await Promise.all(
-      Object.keys(modules).map(async (uri) => {
-        return {
-          ...(await eventMetadata(uri)),
-          ts: modules[uri]?.start,
-          dur: modules[uri]?.diff,
-          ph: "X",
-          args: {
-            ms: modules[uri]?.diff,
-          },
-        };
-      })
+      Object.keys(modules)
+        .sort()
+        .map(async (uri) => {
+          return {
+            ...(await eventMetadata(uri)),
+            ts: modules[uri]?.start,
+            dur: modules[uri]?.diff,
+            ph: "X",
+            args: {
+              ms: modules[uri]?.diff,
+              uri: uri,
+            },
+          };
+        })
     ),
     displayTimeUnit: "ms",
   };
   await promises.writeFile(benchmarkOutputPath, JSON.stringify(fileContent, null, 2));
 }
 
-async function eventMetadata(uri: string): Promise<any> {
+type EventMetadata = {
+  pid: string;
+  tid?: string;
+  name: string;
+};
+
+async function eventMetadata(uri: string): Promise<EventMetadata> {
   if (!uri.includes("file://")) {
     return { pid: "node", name: uri };
   }

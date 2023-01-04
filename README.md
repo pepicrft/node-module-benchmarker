@@ -2,6 +2,14 @@
 
 [![node-module-benchmarker](https://github.com/pepicrft/node-module-benchmarker/actions/workflows/node-module-benchmarker.yml/badge.svg)](https://github.com/pepicrft/node-module-benchmarker/actions/workflows/node-module-benchmarker.yml)
 
+## Usage
+
+Install the dependency: `pnpm install -D node-module-benchmarker` and use the `node-module-benchmarker` executable instead of `node` specifying the output path with the environment variable `BENCHMARK_OUTPUT_PATH`.
+
+For example, `BENCHMARK_OUTPUT_PATH=benchmark.json pnpm exec node-module-benchmarker src/index.js` instead of `node src/index.js`.
+The tool will benchmark the time it takes to load the CJS and ESM modules, stop the execution after 5 seconds, and output the results.
+
+
 ## Development
 
 ### Setup
@@ -15,7 +23,6 @@
 
 - [NodeJS](https://nodejs.org) 19.1.0
 - [PNPM](https://pnpm.io) 7.17.0
-
 
 ## References
 

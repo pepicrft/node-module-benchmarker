@@ -99,5 +99,5 @@ async function eventMetadata(uri: string): Promise<EventMetadata> {
   const packageJson = await promises.readFile(packageJsonPath);
   const packageName = JSON.parse(packageJson.toString())["name"] ?? basename(dirname(packageJsonPath));
   const id = `${packageName}:${relative(dirname(packageJsonPath), path)}`;
-  return { pid: packageName, tid: id, name: id };
+  return { pid: packageName, name: id };
 }

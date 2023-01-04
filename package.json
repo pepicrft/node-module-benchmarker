@@ -1,6 +1,6 @@
 {
   "name": "node-module-benchmarker",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A Node module loader to benchmark the time it takes to load an ESM module graph",
   "keywords": [
     "benchmark",
@@ -21,6 +21,7 @@
     }
   },
   "scripts": {
+    "prepack": "pnpm run build",
     "node-module-benchmarker": "pnpm build && BENCHMARK_OUTPUT_PATH=./output.json node bin/node-module-benchmarker.js",
     "build": "pnpm clean && tsc -p ./tsconfig.build.json",
     "clean": "rimraf dist",

@@ -1,5 +1,4 @@
 export const load: Load = async function (uri, context, fallback) {
-  const benchmarkPath = process.env.BENCHMARK_PATH;
   const start = Date.now()
   const result = await fallback(uri, context, fallback)
   const end = Date.now()

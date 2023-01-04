@@ -1,4 +1,4 @@
-name: node-esm-benchmark
+name: node-module-benchmarker
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   pull_request:
 
 concurrency:
-  group: node-esm-benchmark-${{ github.head_ref || github.run_id }}
+  group: node-module-benchmarker-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
 env:

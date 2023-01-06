@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@changesets/cli': ^2.26.0
-  '@types/node': 14.17.0
+  '@types/node': 14.18.36
   '@typescript-eslint/eslint-plugin': ^5.48.0
   '@typescript-eslint/parser': ^5.48.0
   chalk: ^5.2.0
@@ -27,7 +27,7 @@ dependencies:
 
 devDependencies:
   '@changesets/cli': 2.26.0
-  '@types/node': 14.17.0
+  '@types/node': 14.18.36
   '@typescript-eslint/eslint-plugin': 5.48.0_k73wpmdolxikpyqun3p36akaaq
   '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
   eslint: 8.31.0
@@ -37,7 +37,7 @@ devDependencies:
   prettier: 2.8.1
   rimraf: 3.0.2
   typescript: 4.9.4
-  vite: 4.0.4_@types+node@14.17.0
+  vite: 4.0.4_@types+node@14.18.36
   vitest: 0.26.3
 
 packages:
@@ -588,8 +588,8 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node/14.17.0:
-    resolution: {integrity: sha512-w8VZUN/f7SSbvVReb9SWp6cJFevxb4/nkG65yLAya//98WgocKm5PLDAtSs5CtJJJM+kHmJjO/6mmYW4MHShZA==}
+  /@types/node/14.18.36:
+    resolution: {integrity: sha512-FXKWbsJ6a1hIrRxv+FoukuHnGTgEzKYGi7kilfMae96AL9UNkPFNWJEEYWzdRI9ooIkbr4AKldyuSTLql06vLQ==}
     dev: true
 
   /@types/node/18.11.18:
@@ -3308,7 +3308,7 @@ packages:
       - terser
     dev: true
 
-  /vite/4.0.4_@types+node@14.17.0:
+  /vite/4.0.4_@types+node@14.18.36:
     resolution: {integrity: sha512-xevPU7M8FU0i/80DMR+YhgrzR5KS2ORy1B4xcX/cXLsvnUWvfHuqMmVU6N0YiJ4JWGRJJsLCgjEzKjG9/GKoSw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3333,7 +3333,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 14.17.0
+      '@types/node': 14.18.36
       esbuild: 0.16.13
       postcss: 8.4.20
       resolve: 1.22.1

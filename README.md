@@ -1,6 +1,6 @@
 # node-module-benchmarker
 
-[![node-module-benchmarker](https://github.com/pepicrft/node-module-benchmarker/actions/workflows/node-module-benchmarker.yml/badge.svg)](https://github.com/pepicrft/node-module-benchmarker/actions/workflows/node-module-benchmarker.yml)
+[![node-module-benchmarker](https://github.com/catalysisdev/node-module-benchmarker/actions/workflows/node-module-benchmarker.yml/badge.svg)](https://github.com/catalysisdev/node-module-benchmarker/actions/workflows/node-module-benchmarker.yml)
 
 ## Usage
 
@@ -14,7 +14,7 @@ The tool will benchmark the time it takes to load the CJS and ESM modules, stop 
 
 ### Setup
 
-1. Clone the repository: `git clone https://github.com/pepicrft/node-module-benchmarker.git`.
+1. Clone the repository: `git clone https://github.com/catalysisdev/node-module-benchmarker.git`.
 2. Install dependencies: `pnpm install`.
 3. Build: `pnpm build`
 4. Test: `pnpm test`.

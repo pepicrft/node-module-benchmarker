@@ -28,7 +28,7 @@ export async function run(nodeProcess: NodeJS.Process = process) {
     signal: abortController.signal,
   });
 
-  task.stdout.on("data", (message: string) => {
+  task.stdout?.on("data", (message: string) => {
     const regex = /BENCHMARK_MODULE_LOAD_TIME_START(.+)BENCHMARK_MODULE_LOAD_TIME_END/;
     const matches = message.toString().match(regex);
     if (matches) {
@@ -41,7 +41,7 @@ export async function run(nodeProcess: NodeJS.Process = process) {
       };
     }
   });
-  task.stderr.on("data", (message: string) => {
+  task.stderr?.on("data", (message: string) => {
     nodeProcess.stderr.write(message);
   });
   setTimeout(() => {

@@ -14,7 +14,7 @@ specifiers:
   node-abort-controller: ^3.0.1
   nx: 15.4.4
   prettier: ^2.8.1
-  rimraf: ^3.0.2
+  rimraf: ^4.0.0
   typescript: ^4.9.4
   vite: ^4.0.4
   vitest: ^0.27.0
@@ -35,7 +35,7 @@ devDependencies:
   eslint-plugin-prettier: 4.2.1_32m5uc2milwdw3tnkcq5del26y
   nx: 15.4.4
   prettier: 2.8.1
-  rimraf: 3.0.2
+  rimraf: 4.0.4
   typescript: 4.9.4
   vite: 4.0.4_@types+node@14.18.36
   vitest: 0.27.0
@@ -2846,6 +2846,12 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: true
+
+  /rimraf/4.0.4:
+    resolution: {integrity: sha512-R0hoVr9xTwemarQjoWlNt/nb5dEGVTBhVdkRmEX2zEkT8T6onH0XKiGjuaC7rNNj/gYzY2p4NVRJ3sjO1ascHQ==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /rollup/3.9.1:
